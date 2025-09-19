@@ -23,9 +23,7 @@ class AsyncFileWriter:
 
     async def stop(self):
         self._is_running = False
-        for task in [self._write_task, self._read_task]:
-            if not task.done():
-                await task
+        await self._read_task
 
     def on_data_arrived(self):
         def decorator(func):
@@ -42,11 +40,11 @@ class AsyncFileWriter:
     async def run(self):
         self._is_running = True
 
-        self._write_task = asyncio.create_task(self.count_down_to_file())
+        # self._write_task = asyncio.create_task(self.count_down_to_file())
         self._read_task = asyncio.create_task(self.read_file())
         try:
-            await self._write_task
-            self._is_running = False
+            # await self._write_task
+            # self._is_running = False
             await self._read_task
         except asyncio.CancelledError:
             logger.warning("Tasks were cancelled.")
@@ -55,15 +53,15 @@ class AsyncFileWriter:
             await callback()
 
 
-    async def count_down_to_file(self):
-        logger.warning("Writing fake data to file")
-        for i in range(1, COUNT_TO+1):
-            if not self._is_running:
-                break
-            await self.append_line(f"This is line {i}.")
-            logger.debug(f"Wrote line {i} to file.")
-            await asyncio.sleep(WRITE_INTERVAL)
-        logger.debug("Write fake data complete.")
+    # async def count_down_to_file(self):
+    #     logger.warning("Writing fake data to file")
+    #     for i in range(1, COUNT_TO+1):
+    #         if not self._is_running:
+    #             break
+    #         await self.append_line(f"This is line {i}.")
+    #         logger.debug(f"Wrote line {i} to file.")
+    #         await asyncio.sleep(WRITE_INTERVAL)
+    #     logger.debug("Write fake data complete.")
 
     async def append_line(self, line: str):
         async with aiofiles.open(self.filename, 'a') as f:
