@@ -1,0 +1,151 @@
+event type,event date,doctor's name,dog's name,notes,dogs descriptive condition
+birth,2024-06-07,Dr. Patel,Buddy,Urgent care,Sick and under treatment
+vaccination,2024-08-24,Dr. Brown,Buddy,Urgent care,Recovering from illness
+grooming,2024-12-29,Dr. Lee,Buddy,Vaccination record,Energetic and young
+vaccination,2025-03-20,Dr. Patel,Buddy,Grooming session,Deceased
+death,2025-05-12,Dr. Lee,Buddy,Urgent care,In good condition
+birth,2022-05-12,Dr. Smith,Max,Vaccination record,Healthy and playful
+vaccination,2022-08-04,Dr. Patel,Max,Follow-up needed,Recovering from illness
+grooming,2022-10-22,Dr. Brown,Max,Follow-up needed,Needs special care
+vaccination,2023-01-01,Dr. Smith,Max,Urgent care,Needs special care
+death,2024-04-21,Dr. Patel,Max,Grooming session,Energetic and young
+birth,2021-11-27,Dr. Patel,Luna,Vaccination record,Needs special care
+vaccination,2022-07-02,Dr. Smith,Luna,,Energetic and young
+grooming,2022-10-30,Dr. Johnson,Luna,Vaccination record,Healthy and playful
+vaccination,2023-01-03,Dr. Brown,Luna,Follow-up needed,Old and calm
+death,2024-01-10,Dr. Brown,Luna,Follow-up needed,Deceased
+birth,2021-12-04,Dr. Johnson,Charlie,,Abandoned and rescued
+vaccination,2022-07-07,Dr. Patel,Charlie,Follow-up needed,In good condition
+grooming,2022-08-22,Dr. Brown,Charlie,Grooming session,Abandoned and rescued
+vaccination,2023-01-30,Dr. Smith,Charlie,,Needs special care
+death,2024-06-01,Dr. Smith,Charlie,Routine check,Abandoned and rescued
+birth,2022-11-05,Dr. Smith,Bella,Vaccination record,Recovering from illness
+vaccination,2023-11-03,Dr. Johnson,Bella,Urgent care,Needs special care
+grooming,2023-12-25,Dr. Johnson,Bella,Follow-up needed,Old and calm
+vaccination,2024-06-26,Dr. Lee,Bella,Urgent care,Energetic and young
+death,2024-10-14,Dr. Brown,Bella,Vaccination record,Deceased
+birth,2024-01-21,Dr. Patel,Rocky,Follow-up needed,Sick and under treatment
+vaccination,2024-11-25,Dr. Patel,Rocky,Vaccination record,Healthy and playful
+grooming,2025-01-20,Dr. Brown,Rocky,Urgent care,Old and calm
+vaccination,2025-02-26,Dr. Brown,Rocky,Routine check,Recently vaccinated
+death,2025-07-10,Dr. Smith,Rocky,Urgent care,Recovering from illness
+birth,2023-10-28,Dr. Smith,Daisy,Grooming session,Needs special care
+vaccination,2024-07-20,Dr. Patel,Daisy,Routine check,Energetic and young
+grooming,2024-10-21,Dr. Brown,Daisy,Routine check,Recently vaccinated
+vaccination,2025-09-20,Dr. Smith,Daisy,Follow-up needed,Healthy and playful
+death,2027-01-24,Dr. Brown,Daisy,Routine check,Energetic and young
+birth,2022-09-27,Dr. Johnson,Cooper,Follow-up needed,Recovering from illness
+vaccination,2023-06-25,Dr. Johnson,Cooper,Grooming session,Recovering from illness
+grooming,2023-10-19,Dr. Lee,Cooper,Routine check,Needs special care
+vaccination,2024-08-03,Dr. Brown,Cooper,Vaccination record,Old and calm
+death,2025-05-07,Dr. Lee,Cooper,Grooming session,In good condition
+birth,2020-01-30,Dr. Johnson,Milo,Follow-up needed,Old and calm
+vaccination,2020-06-01,Dr. Patel,Milo,Follow-up needed,Recently vaccinated
+grooming,2020-07-07,Dr. Lee,Milo,Urgent care,Old and calm
+vaccination,2021-02-02,Dr. Brown,Milo,Follow-up needed,In good condition
+death,2021-12-28,Dr. Smith,Milo,Urgent care,Deceased
+birth,2022-08-06,Dr. Brown,Sadie,,Recently vaccinated
+vaccination,2023-04-14,Dr. Brown,Sadie,Grooming session,Deceased
+grooming,2023-07-05,Dr. Johnson,Sadie,Vaccination record,Needs special care
+vaccination,2023-08-20,Dr. Smith,Sadie,Urgent care,In good condition
+death,2024-04-27,Dr. Patel,Sadie,Routine check,Energetic and young
+birth,2021-11-13,Dr. Lee,Tucker,Vaccination record,Recovering from illness
+vaccination,2022-03-16,Dr. Johnson,Tucker,Follow-up needed,Healthy and playful
+grooming,2022-04-19,Dr. Brown,Tucker,Routine check,Deceased
+vaccination,2023-04-18,Dr. Brown,Tucker,Grooming session,Energetic and young
+death,2023-07-11,Dr. Lee,Tucker,Vaccination record,Needs special care
+birth,2023-12-23,Dr. Lee,Coco,,Healthy and playful
+vaccination,2024-06-17,Dr. Lee,Coco,Vaccination record,Healthy and playful
+grooming,2024-08-28,Dr. Johnson,Coco,,Healthy and playful
+vaccination,2025-07-12,Dr. Brown,Coco,Grooming session,Recently vaccinated
+death,2027-05-14,Dr. Smith,Coco,Vaccination record,Recently vaccinated
+birth,2021-02-01,Dr. Lee,Rosie,Routine check,Deceased
+vaccination,2021-11-30,Dr. Brown,Rosie,,Energetic and young
+grooming,2022-02-27,Dr. Patel,Rosie,Vaccination record,Deceased
+vaccination,2022-08-09,Dr. Johnson,Rosie,Grooming session,Deceased
+death,2023-04-01,Dr. Brown,Rosie,Urgent care,Recently vaccinated
+birth,2020-02-20,Dr. Smith,Oscar,Vaccination record,Deceased
+vaccination,2020-11-29,Dr. Smith,Oscar,Vaccination record,Old and calm
+grooming,2021-01-18,Dr. Johnson,Oscar,Routine check,Abandoned and rescued
+vaccination,2021-06-09,Dr. Smith,Oscar,Routine check,In good condition
+death,2021-07-29,Dr. Brown,Oscar,Grooming session,Recovering from illness
+birth,2020-05-22,Dr. Patel,Lily,Routine check,Energetic and young
+vaccination,2021-01-31,Dr. Smith,Lily,Grooming session,Healthy and playful
+grooming,2021-05-02,Dr. Smith,Lily,Vaccination record,Deceased
+vaccination,2021-09-02,Dr. Lee,Lily,,Recovering from illness
+death,2023-02-08,Dr. Patel,Lily,Urgent care,Abandoned and rescued
+birth,2021-11-01,Dr. Brown,Zeus,Follow-up needed,Energetic and young
+vaccination,2022-07-30,Dr. Patel,Zeus,Routine check,Recently vaccinated
+grooming,2022-10-01,Dr. Johnson,Zeus,Grooming session,Needs special care
+vaccination,2023-09-09,Dr. Lee,Zeus,Routine check,In good condition
+death,2025-01-20,Dr. Lee,Zeus,Follow-up needed,Recently vaccinated
+birth,2023-08-19,Dr. Brown,Ruby,Vaccination record,In good condition
+vaccination,2024-07-04,Dr. Patel,Ruby,Vaccination record,Recently vaccinated
+grooming,2024-08-04,Dr. Patel,Ruby,Routine check,Old and calm
+vaccination,2024-12-31,Dr. Lee,Ruby,,Abandoned and rescued
+death,2026-09-24,Dr. Johnson,Ruby,Routine check,Abandoned and rescued
+birth,2021-12-03,Dr. Patel,Bear,Urgent care,Sick and under treatment
+vaccination,2022-02-27,Dr. Johnson,Bear,Grooming session,In good condition
+grooming,2022-06-16,Dr. Johnson,Bear,,Sick and under treatment
+vaccination,2023-01-03,Dr. Johnson,Bear,Routine check,Recovering from illness
+death,2024-09-19,Dr. Smith,Bear,,Old and calm
+birth,2020-09-24,Dr. Patel,Lucy,Follow-up needed,Recently vaccinated
+vaccination,2021-05-29,Dr. Lee,Lucy,Follow-up needed,Deceased
+grooming,2021-10-19,Dr. Patel,Lucy,Vaccination record,Recently vaccinated
+vaccination,2022-03-12,Dr. Smith,Lucy,,Healthy and playful
+death,2023-10-09,Dr. Johnson,Lucy,,Recently vaccinated
+birth,2024-07-26,Dr. Smith,Duke,Routine check,Energetic and young
+vaccination,2024-10-08,Dr. Patel,Duke,Grooming session,Old and calm
+grooming,2025-01-14,Dr. Lee,Duke,Follow-up needed,Healthy and playful
+vaccination,2026-01-14,Dr. Brown,Duke,Routine check,Sick and under treatment
+death,2028-01-13,Dr. Johnson,Duke,Urgent care,Deceased
+birth,2024-03-14,Dr. Smith,Penny,Follow-up needed,Abandoned and rescued
+vaccination,2024-08-15,Dr. Patel,Penny,Urgent care,Old and calm
+grooming,2024-10-25,Dr. Smith,Penny,,Abandoned and rescued
+vaccination,2025-01-02,Dr. Smith,Penny,Grooming session,Sick and under treatment
+death,2025-09-21,Dr. Patel,Penny,Routine check,Recently vaccinated
+birth,2022-03-23,Dr. Patel,Jack,Routine check,Abandoned and rescued
+vaccination,2022-06-19,Dr. Smith,Jack,Urgent care,Sick and under treatment
+grooming,2022-07-30,Dr. Johnson,Jack,,Deceased
+vaccination,2023-05-04,Dr. Lee,Jack,Grooming session,In good condition
+death,2024-07-08,Dr. Patel,Jack,,Energetic and young
+birth,2021-01-24,Dr. Brown,Molly,Grooming session,Deceased
+vaccination,2021-05-04,Dr. Smith,Molly,Routine check,Energetic and young
+grooming,2021-08-29,Dr. Brown,Molly,Urgent care,Recovering from illness
+vaccination,2021-10-26,Dr. Smith,Molly,Routine check,Recovering from illness
+death,2022-04-22,Dr. Brown,Molly,Grooming session,Healthy and playful
+birth,2021-04-30,Dr. Brown,Toby,Follow-up needed,In good condition
+vaccination,2022-02-17,Dr. Brown,Toby,Grooming session,Needs special care
+grooming,2022-04-23,Dr. Lee,Toby,Grooming session,Old and calm
+vaccination,2022-06-21,Dr. Lee,Toby,Urgent care,Abandoned and rescued
+death,2023-07-14,Dr. Lee,Toby,Follow-up needed,Healthy and playful
+birth,2023-03-06,Dr. Patel,Sophie,Vaccination record,Recently vaccinated
+vaccination,2024-02-08,Dr. Brown,Sophie,Vaccination record,Recently vaccinated
+grooming,2024-04-04,Dr. Patel,Sophie,Routine check,Abandoned and rescued
+vaccination,2024-09-25,Dr. Smith,Sophie,Follow-up needed,Energetic and young
+death,2024-11-04,Dr. Johnson,Sophie,,Healthy and playful
+birth,2024-07-19,Dr. Patel,Bailey,Routine check,Healthy and playful
+vaccination,2024-12-23,Dr. Johnson,Bailey,Vaccination record,Old and calm
+grooming,2025-06-21,Dr. Smith,Bailey,Routine check,Recently vaccinated
+vaccination,2026-06-11,Dr. Lee,Bailey,Grooming session,Old and calm
+death,2026-12-31,Dr. Lee,Bailey,Urgent care,Recently vaccinated
+birth,2020-09-14,Dr. Johnson,Maggie,Routine check,Recently vaccinated
+vaccination,2020-11-16,Dr. Lee,Maggie,Urgent care,Old and calm
+grooming,2021-04-15,Dr. Smith,Maggie,Follow-up needed,Healthy and playful
+vaccination,2021-11-21,Dr. Brown,Maggie,,Sick and under treatment
+death,2022-12-10,Dr. Lee,Maggie,Urgent care,Recovering from illness
+birth,2021-02-09,Dr. Smith,Buster,Follow-up needed,In good condition
+vaccination,2021-09-27,Dr. Brown,Buster,Routine check,Recently vaccinated
+grooming,2022-02-26,Dr. Patel,Buster,Grooming session,Deceased
+vaccination,2023-01-26,Dr. Patel,Buster,Follow-up needed,Abandoned and rescued
+death,2024-05-20,Dr. Smith,Buster,,Recently vaccinated
+birth,2022-11-27,Dr. Brown,Ginger,Urgent care,Recovering from illness
+vaccination,2023-11-06,Dr. Patel,Ginger,Routine check,Energetic and young
+grooming,2024-02-02,Dr. Lee,Ginger,Routine check,Old and calm
+vaccination,2024-04-25,Dr. Brown,Ginger,Follow-up needed,Recovering from illness
+death,2025-10-17,Dr. Lee,Ginger,Routine check,Recovering from illness
+birth,2022-02-11,Dr. Johnson,Shadow,Follow-up needed,In good condition
+vaccination,2022-12-13,Dr. Smith,Shadow,Follow-up needed,Sick and under treatment
+grooming,2023-03-11,Dr. Smith,Shadow,Urgent care,Recently vaccinated
+vaccination,2023-12-22,Dr. Brown,Shadow,Follow-up needed,In good condition
+death,2024-03-20,Dr. Brown,Shadow,Routine check,Deceased
