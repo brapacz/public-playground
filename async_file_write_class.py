@@ -9,9 +9,24 @@ WRITE_INTERVAL = 0.5  # seconds
 class AsyncFileWriter:
     def __init__(self, filename: str):
         self.filename = filename
+        self._data_arrived_callbacks = []
+        self._closed_callbacks = []
+        self._is_running = False
 
     def run(self):
         asyncio.run(self.async_run())
+
+    def on_data_arrived(self):
+        def decorator(func):
+            self._data_arrived_callbacks.append(func)
+            return func
+        return decorator
+
+    def on_closed(self):
+        def decorator(func):
+            self._closed_callbacks.append(func)
+            return func
+        return decorator
 
     async def async_run(self):
         self._is_running = True
@@ -23,13 +38,16 @@ class AsyncFileWriter:
             self._is_running = False
             await read_task
         except asyncio.CancelledError:
+            
             print()
             print("Tasks were cancelled.")
             self._is_running = False
             if not write_task.done():
                 await write_task
             await read_task
-            # raise
+        finally:
+            for callback in self._closed_callbacks:
+                await callback()
 
 
     async def count_down_to_file(self):
@@ -48,6 +66,8 @@ class AsyncFileWriter:
         while True:
             async for line in f:
                 print(f"File contents read: {line.strip()}")
+                for callback in self._data_arrived_callbacks:
+                    await callback(line.strip())
             if not self._is_running:
                 break
             await asyncio.sleep(0)
@@ -63,9 +83,12 @@ with open(THE_FILE, 'w') as file:
     pass
 
 writer = AsyncFileWriter(THE_FILE)
+@writer.on_data_arrived()
+async def on_data_arrived(data):
+    print(f"Data arrived in callback: {data}")
 
-@writer.on_data_arrived('some id')
-def on_data_arrived(data):
-    print(f"Data arrived: {data}")
+@writer.on_closed()
+async def on_closed():
+    print("File writer closed.")
 
 writer.run()
