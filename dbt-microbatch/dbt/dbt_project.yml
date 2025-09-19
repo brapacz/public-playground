@@ -1,0 +1,19 @@
+name: "playground_microbatch"
+version: "0.0.0"
+
+# This setting configures which "profile" dbt uses for this project.
+profile: playground_microbatch
+
+# Example model configuration
+models:
+  +materialized: table
+  +persist_docs:
+    relation: true
+    columns: true
+
+tests:
+  tests: ~ # directory name
+
+on-run-start: []
+
+vars: ~
