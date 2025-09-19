@@ -11,7 +11,7 @@ WRITE_INTERVAL = 0.5  # seconds
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-class AsyncFileWriter:
+class AlmostAsyncSerial:
     def __init__(self, filename: str):
         self.filename = filename
         self._data_arrived_callbacks = []
@@ -39,29 +39,14 @@ class AsyncFileWriter:
 
     async def run(self):
         self._is_running = True
-
-        # self._write_task = asyncio.create_task(self.count_down_to_file())
         self._read_task = asyncio.create_task(self.read_file())
         try:
-            # await self._write_task
-            # self._is_running = False
             await self._read_task
         except asyncio.CancelledError:
             logger.warning("Tasks were cancelled.")
         await self.stop()
         for callback in self._closed_callbacks:
             await callback()
-
-
-    # async def count_down_to_file(self):
-    #     logger.warning("Writing fake data to file")
-    #     for i in range(1, COUNT_TO+1):
-    #         if not self._is_running:
-    #             break
-    #         await self.append_line(f"This is line {i}.")
-    #         logger.debug(f"Wrote line {i} to file.")
-    #         await asyncio.sleep(WRITE_INTERVAL)
-    #     logger.debug("Write fake data complete.")
 
     async def append_line(self, line: str):
         async with aiofiles.open(self.filename, 'a') as f:
@@ -81,33 +66,41 @@ class AsyncFileWriter:
         await f.close()
         logger.info("Read complete.")
 
-
-if os.path.exists(THE_FILE):
-    os.remove(THE_FILE)
-
-# Create empty file
+# Create empty file or empty existing file
 with open(THE_FILE, 'w') as file:
     pass
 
-writer = AsyncFileWriter(THE_FILE)
-@writer.on_data_arrived()
+fake_serial = AlmostAsyncSerial(THE_FILE)
+@fake_serial.on_data_arrived()
 async def on_data_arrived(data):
     print(f"> Data arrived in callback: {data}")
 
-@writer.on_closed()
+@fake_serial.on_closed()
 async def on_closed():
     print("> File writer closed.")
-    await writer.append_line("Last words from callback.")
+    await fake_serial.append_line("Last words from callback.")
 
-async def aaa():
-    # writer.run()
-    writer_task = asyncio.create_task(writer.run())
 
-    await writer.append_line("dupa")
+async def fake_writer1():
+    await fake_serial.append_line("dupa")
     await asyncio.sleep(3)
-    await writer.append_line("nosacz")
+    await fake_serial.append_line("nosacz")
+    logger.debug("Write fake data complete.")
 
-    await writer.stop()
-    await writer_task
+async def fake_writer2():
+    logger.warning("Writing fake data to file")
+    for i in range(1, COUNT_TO+1):
+        await fake_serial.append_line(f"This is line {i}.")
+        await asyncio.sleep(WRITE_INTERVAL)
+    logger.debug("Write fake data complete.")
 
-asyncio.run(aaa())
+async def async_main():
+    task_writer1 = asyncio.create_task(fake_writer1())
+    task_writer2 = asyncio.create_task(fake_writer2())
+    task_serial = asyncio.create_task(fake_serial.run())
+
+    await task_writer1
+    await task_writer2
+    await task_serial
+
+asyncio.run(async_main())
