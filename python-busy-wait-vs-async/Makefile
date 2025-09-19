@@ -1,4 +1,3 @@
-SHELL := /usr/bin/env fish
 PYTHON := $(shell pwd)/.venv/bin/python
 PIP := $(PYTHON) -m pip
 
@@ -38,3 +37,7 @@ write_to_file: $(THE_FILE)
 
 $(THE_FILE):
 	touch $@
+
+.PHONY: clean
+clean:
+	rm -rf .venv
