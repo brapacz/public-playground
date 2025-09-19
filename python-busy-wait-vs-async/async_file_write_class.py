@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import os
 import aiofiles
 
 
@@ -64,9 +65,12 @@ class AlmostAsyncSerial:
         logger.info("Read complete.")
 
 
-THE_FILE = '/tmp/the_file.txt'
 COUNT_TO = 4
 WRITE_INTERVAL = 0.5  # seconds
+THE_FILE = os.getenv('THE_FILE')
+if not THE_FILE:
+    logger.fatal("Environment variable THE_FILE is not set. Exiting.")
+    exit(1)
 
 # Create empty file or empty existing file
 with open(THE_FILE, 'w') as file:
@@ -90,29 +94,29 @@ async def on_closed():
 
 
 async def fake_writer1():
-    await fake_serial.append_line("dupa")
+    await fake_serial.append_line("first")
     for _ in range(30):
         await asyncio.sleep(0.1)
         if not fake_serial.running:
             logger.warning("Serial reader stopped, stopping fake writer 1.")
             return
-    await fake_serial.append_line("nosacz")
+    await fake_serial.append_line("last")
     logger.debug("Write fake data complete.")
 
 async def fake_writer2():
-    logger.warning("Writing fake data to file")
-    for i in range(1, COUNT_TO+1):
+    logger.warning("Writing countdown to file")
+    for i in range(COUNT_TO, 0, -1):
         if not fake_serial.running:
             logger.warning("Serial reader stopped, stopping fake writer 2.")
             return
         await fake_serial.append_line(f"This is line {i}.")
         await asyncio.sleep(WRITE_INTERVAL)
-    logger.debug("Write fake data complete.")
+    logger.debug("Writing countdown complete.")
 
 async def async_main():
+    task_serial = asyncio.create_task(fake_serial.run())
     task_writer1 = asyncio.create_task(fake_writer1())
     task_writer2 = asyncio.create_task(fake_writer2())
-    task_serial = asyncio.create_task(fake_serial.run())
 
     await task_serial
     await task_writer1
