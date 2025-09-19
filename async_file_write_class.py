@@ -1,12 +1,7 @@
 import asyncio
 import logging
 import aiofiles
-import os
-import time
 
-THE_FILE = '/tmp/the_file.txt'
-COUNT_TO = 20
-WRITE_INTERVAL = 0.5  # seconds
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -21,9 +16,12 @@ class AlmostAsyncSerial:
     def run_async(self):
         asyncio.run(self.run())
 
+    @property
+    def running(self):
+        return self._is_running
+
     async def stop(self):
         self._is_running = False
-        await self._read_task
 
     def on_data_arrived(self):
         def decorator(func):
@@ -43,7 +41,7 @@ class AlmostAsyncSerial:
         try:
             await self._read_task
         except asyncio.CancelledError:
-            logger.warning("Tasks were cancelled.")
+            logger.warning("Read task has been cancelled.")
         await self.stop()
         for callback in self._closed_callbacks:
             await callback()
@@ -54,8 +52,7 @@ class AlmostAsyncSerial:
 
     async def read_file(self):
         f = await aiofiles.open(self.filename, 'r')
-        await f.seek(0)
-        while True:
+        while self._is_running:
             async for line in f:
                 logger.debug(f"File contents read: {line.strip()}")
                 for callback in self._data_arrived_callbacks:
@@ -66,6 +63,11 @@ class AlmostAsyncSerial:
         await f.close()
         logger.info("Read complete.")
 
+
+THE_FILE = '/tmp/the_file.txt'
+COUNT_TO = 4
+WRITE_INTERVAL = 0.5  # seconds
+
 # Create empty file or empty existing file
 with open(THE_FILE, 'w') as file:
     pass
@@ -75,6 +77,12 @@ fake_serial = AlmostAsyncSerial(THE_FILE)
 async def on_data_arrived(data):
     print(f"> Data arrived in callback: {data}")
 
+@fake_serial.on_data_arrived()
+async def stop_when_stop(data):
+    if data == "stop":
+        print("> Stopping serial reader.")
+        await fake_serial.stop()
+
 @fake_serial.on_closed()
 async def on_closed():
     print("> File writer closed.")
@@ -83,13 +91,20 @@ async def on_closed():
 
 async def fake_writer1():
     await fake_serial.append_line("dupa")
-    await asyncio.sleep(3)
+    for _ in range(30):
+        await asyncio.sleep(0.1)
+        if not fake_serial.running:
+            logger.warning("Serial reader stopped, stopping fake writer 1.")
+            return
     await fake_serial.append_line("nosacz")
     logger.debug("Write fake data complete.")
 
 async def fake_writer2():
     logger.warning("Writing fake data to file")
     for i in range(1, COUNT_TO+1):
+        if not fake_serial.running:
+            logger.warning("Serial reader stopped, stopping fake writer 2.")
+            return
         await fake_serial.append_line(f"This is line {i}.")
         await asyncio.sleep(WRITE_INTERVAL)
     logger.debug("Write fake data complete.")
@@ -99,8 +114,9 @@ async def async_main():
     task_writer2 = asyncio.create_task(fake_writer2())
     task_serial = asyncio.create_task(fake_serial.run())
 
+    await task_serial
     await task_writer1
     await task_writer2
-    await task_serial
+
 
 asyncio.run(async_main())
