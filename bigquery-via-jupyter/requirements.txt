@@ -1,0 +1,9 @@
+bigquery-magics
+ipykernel
+jupyter
+google-cloud-bigquery
+google-cloud-bigquery-storage
+pyarrow
+pandas
+db-dtypes
+tqdm # for progressbar
